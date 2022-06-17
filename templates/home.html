@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+{% block title %}
+Home page
+{% endblock %}
+
+
+{% block body %}
+    {% for pos in post %}
+    <a href="/detail/{{pos.id}}/" style="display: inline-block;">
+        {{pos.text}}
+        <br>
+        {% thumbnail pos.image "200x200" crop="center" as im %}
+    <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+    <br>
+    </a>
+    <hr>
+{% endthumbnail %}
+        {%  endfor %}
+{% endblock %}
